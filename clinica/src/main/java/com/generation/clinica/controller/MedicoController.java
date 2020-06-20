@@ -29,10 +29,10 @@ package com.generation.clinica.controller;
 		//-------------------------------------
 		//início get
 		//pegando a medico pelo código
-		@GetMapping("/{crmMedico}")
+		@GetMapping("/{crm}")
 		public ResponseEntity <MedicoModel> 
-		GetById(@PathVariable String crmMedico) {
-			return repository.findById(crmMedico).
+		GetById(@PathVariable String crm) {
+			return repository.findById(crm).
 		map(resp->ResponseEntity.ok(resp)).
 		orElse(ResponseEntity.notFound().build());
 		}//get para código
@@ -42,11 +42,10 @@ package com.generation.clinica.controller;
 			return ResponseEntity.ok(repository.findAll());		
 		}//get geral
 		
-		@GetMapping("/medico/{nomeMedico}")
+		@GetMapping("/medico/{medico}")
 		public ResponseEntity <List<MedicoModel>> 
-		getByNomeMedico(@PathVariable String nomeMedico) {
-			return ResponseEntity.ok(repository.
-					findAllByNomeContainingIgnoreCase(nomeMedico));
+		getByNomeMedico(@PathVariable String nome) {
+			return ResponseEntity.ok(repository.findAllByNomeContainingIgnoreCase(nome));
 		}//get para medico
 		
 		// fim get
@@ -76,9 +75,9 @@ package com.generation.clinica.controller;
 		
 		//--------------------------------------
 		//início delete
-		@DeleteMapping("/{crmMedico}")
-		public void delete(@PathVariable String crmMedico) {
-			repository.deleteById(crmMedico);
+		@DeleteMapping("/{crm}")
+		public void delete(@PathVariable String crm) {
+			repository.deleteById(crm);
 		}
 		//fim delete
 		//--------------------------------------

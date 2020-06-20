@@ -42,11 +42,10 @@ public class PacienteController {
 				return ResponseEntity.ok(repository.findAll());		
 			}//get geral
 			
-			@GetMapping("/medico/{nomePaciente}")
+			@GetMapping("/paciente/{paciente}")
 			public ResponseEntity <List<PacienteModel>> 
-			getByNomeMedico(@PathVariable String nomePaciente) {
-				return ResponseEntity.ok(repository.
-						findAllByNomeContainingIgnoreCase(nomePaciente));
+			getByNomeMedico(@PathVariable String nome) {
+				return ResponseEntity.ok(repository.findAllByNomeContainingIgnoreCase(nome));
 			}//get para medico
 			
 			// fim get

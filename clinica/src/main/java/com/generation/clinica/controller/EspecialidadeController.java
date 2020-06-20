@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,64 +23,37 @@ import com.generation.clinica.repository.EspecialidadeRepository;
 @RequestMapping("/especialidade")
 @CrossOrigin("*")
 public class EspecialidadeController {
-	
+
 	@Autowired
 	private EspecialidadeRepository repository;
 	
-	//-------------------------------------
-	//início get
-	//pegando a especialidade pelo código
-	@GetMapping("/{codEspecialidade}")
-	public ResponseEntity <EspecialidadeModel> 
-	GetById(@PathVariable long codEspecialidade) {
-		return repository.findById(codEspecialidade).
-	map(resp->ResponseEntity.ok(resp)).
-	orElse(ResponseEntity.notFound().build());
-	}//get para código
+	@GetMapping
+	public ResponseEntity<EspecialidadeModel>getById(@PathVariable long codEspecialidade) {
+		return repository.findById(codEspecialidade).map(resp->ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
+	}
 	
 	@GetMapping
-	public ResponseEntity<List<EspecialidadeModel>> getAll() {
-		return ResponseEntity.ok(repository.findAll());		
-	}//get geral
+	public ResponseEntity<List<EspecialidadeModel>>getAll() {
+		return ResponseEntity.ok(repository.findAll());
+	}
 	
-	@GetMapping("/especialidade/{nomeEspecialidade}")
-	public ResponseEntity <List<EspecialidadeModel>> 
-	getByNomeEspecialidade(@PathVariable String nomeEspecialidade) {
-		return ResponseEntity.ok(repository.
-				findAllBynomeEspecialidadeContainingIgnoreCase(nomeEspecialidade));
-	}//get para especialidade
+	@GetMapping
+	public ResponseEntity<List<EspecialidadeModel>>getByNomeEspecialidade(@PathVariable String nome) {
+		return ResponseEntity.ok(repository.findAllByNomeContainingIgnoreCase(nome));
+	}
 	
-	// fim get
-	//------------------------------------
-	
-	//------------------------------------
-	//início post
 	@PostMapping
-	public ResponseEntity <EspecialidadeModel> Post
-	(@RequestBody EspecialidadeModel especialidade) {
-		return ResponseEntity.status(HttpStatus.CREATED).
-				body(repository.save(especialidade));
+	public ResponseEntity<EspecialidadeModel> Post(@RequestBody EspecialidadeModel especialidade) {
+		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(especialidade));
 	}
-	//fim post
-	//--------------------------------------
 	
-	//--------------------------------------
-	//início put
 	@PutMapping
-	public ResponseEntity <EspecialidadeModel> Put
-	(@RequestBody EspecialidadeModel especialidade) {
-		return ResponseEntity.status(HttpStatus.OK).
-				body(repository.save(especialidade));
+	public ResponseEntity<EspecialidadeModel> Put(@RequestBody EspecialidadeModel especialidade) {
+		return ResponseEntity.status(HttpStatus.OK).body(repository.save(especialidade));
 	}
-	//fim put
-	//--------------------------------------
 	
-	//--------------------------------------
-	//início delete
-	@DeleteMapping("/{codEspecialidade}")
+	@DeleteMapping
 	public void delete(@PathVariable long codEspecialidade) {
 		repository.deleteById(codEspecialidade);
 	}
-	//fim delete
-	//--------------------------------------
 }

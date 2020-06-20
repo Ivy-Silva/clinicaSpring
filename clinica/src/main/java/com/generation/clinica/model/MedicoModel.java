@@ -14,31 +14,31 @@ import javax.validation.constraints.Size;
 public class MedicoModel {
 	
 	@Id
-	private String crmMedico;
+	private String crm;
 	
-	@Column(name="nomeMedico", nullable=false, length=80)
+	@Column(name="nome", nullable=false, length=80)
 	@Size(min=2, max=80)
-	private String nomeMedico;
+	private String nome;
 	
 	//chave estrangeira - relacionada com a tabela especialidade
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="codEspecialidade", referencedColumnName="codEspecialidade")
 	private EspecialidadeModel especialidade;
 
-	public String getCrmMedico() {
-		return crmMedico;
+	public String getCrm() {
+		return crm;
 	}
 
-	public void setCrmMedico(String crmMedico) {
-		this.crmMedico = crmMedico;
+	public void setCrm(String crm) {
+		this.crm = crm;
 	}
 
-	public String getNomeMedico() {
-		return nomeMedico;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setNomeMedico(String nomeMedico) {
-		this.nomeMedico = nomeMedico;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public EspecialidadeModel getEspecialidade() {
@@ -48,6 +48,8 @@ public class MedicoModel {
 	public void setEspecialidade(EspecialidadeModel especialidade) {
 		this.especialidade = especialidade;
 	}
+
+	
 
 	
 }

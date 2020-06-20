@@ -16,19 +16,19 @@ public class PacienteModel {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long codPaciente;
 	
-	@Column(name="nomePaciente", nullable = false)
+	@Column(name="nome", nullable = false)
 	@Size(min=2, max=80)
-	private String nomePaciente;
+	private String nome;
 	
-	@Column(name="enderecoPaciente", nullable = false)
+	@Column(name="endereco", nullable = false)
 	@Size(min=2, max=80)
-	private String enderecoPaciente;
+	private String endereco;
 	
-	@Column(name="cepPaciente", nullable = false)
+	@Column(name="cep", nullable = false)
 	@Size(min=2, max=80)
-	private String cepPaciente;
+	private String cep;
 	
-	@Column(name="telefonePaciente", nullable = false)
+	@Column(name="telefone", nullable = false)
 	@Size(min=9, max=80)
 	private String telefone;
 
@@ -40,28 +40,28 @@ public class PacienteModel {
 		this.codPaciente = codPaciente;
 	}
 
-	public String getNomePaciente() {
-		return nomePaciente;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setNomePaciente(String nomePaciente) {
-		this.nomePaciente = nomePaciente;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
-	public String getEnderecoPaciente() {
-		return enderecoPaciente;
+	public String getEndereco() {
+		return endereco;
 	}
 
-	public void setEnderecoPaciente(String enderecoPaciente) {
-		this.enderecoPaciente = enderecoPaciente;
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
 	}
 
-	public String getCepPaciente() {
-		return cepPaciente;
+	public String getCep() {
+		return cep;
 	}
 
-	public void setCepPaciente(String cepPaciente) {
-		this.cepPaciente = cepPaciente;
+	public void setCep(String cep) {
+		this.cep = cep;
 	}
 
 	public String getTelefone() {
@@ -71,6 +71,7 @@ public class PacienteModel {
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
+
 	
 	
 

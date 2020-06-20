@@ -15,8 +15,8 @@ public class EspecialidadeModel {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long codEspecialidade;
 	
-	@Column(name = "nomeEspecialidade", nullable=false, length=50)
-	private String nomeEspecialidade;
+	@Column(name = "nome", nullable=false, length=50)
+	private String nome;
 
 	public long getCodEspecialidade() {
 		return codEspecialidade;
@@ -26,12 +26,14 @@ public class EspecialidadeModel {
 		this.codEspecialidade = codEspecialidade;
 	}
 
-	public String getNomeEspecialidade() {
-		return nomeEspecialidade;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setNomeEspecialidade(String nomeEspecialidade) {
-		this.nomeEspecialidade = nomeEspecialidade;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
+
+	
 
 }

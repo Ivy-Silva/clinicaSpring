@@ -11,6 +11,6 @@ import com.generation.clinica.model.EspecialidadeModel;
 public interface EspecialidadeRepository extends JpaRepository<EspecialidadeModel, Long> {
 	
 	public List<EspecialidadeModel> 
-	findAllBynomeEspecialidadeContainingIgnoreCase(String nomeEspecialidade);
+	findAllByNomeContainingIgnoreCase(String nome);
 
 }
